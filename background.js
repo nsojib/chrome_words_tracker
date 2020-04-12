@@ -5,6 +5,7 @@
  
 
 function downloadFileFromText(filename, content) {
+//courtesy: https://stackoverflow.com/questions/4845215/making-a-chrome-extension-download-a-file
     var a = document.createElement('a');
     var blob = new Blob([ content ], {type : "text/plain;charset=UTF-8"});
     a.href = window.URL.createObjectURL(blob);
@@ -19,8 +20,8 @@ var words=[];
 
 
  var showMenuItem = {
-                    "id": "ns_word_saver1",
-                    "title": "NS: show words", 
+                    "id": "word_saver1",
+                    "title": "show words", 
                     "contexts": ["all"],  // type of context
 					 
 					onclick: function() {
@@ -32,12 +33,12 @@ var words=[];
 
  
 var contextMenuItem = {
-                    "id": "ns_word_saver",
-                    "title": "NS: save words now", 
+                    "id": "word_saver",
+                    "title": "save words now", 
                     "contexts": ["all"],  // type of context
 					 
 					onclick: function() {  
-						downloadFileFromText('ns_words.txt',String(words) );
+						downloadFileFromText('ws_words_'+String(words.length)+'.txt',String(words) );
 						words=[];
 			}
 			
