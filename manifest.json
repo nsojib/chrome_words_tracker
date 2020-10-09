@@ -10,7 +10,7 @@
    "default_popup": "popup.html"
   },
  "background": {
-      "scripts": ["background.js"]
+      "scripts": ["jquery.min.js","background.js"]
     },
 
   "permissions": [
@@ -31,7 +31,7 @@
             "http://*/*",
             "https://*/*"
             ],
-		 "js": ["content_main.js"],  
+		 "js": ["jquery.min.js", "content_main.js"],  
         "run_at": "document_end"         // pay attention to this line
         }
     ] 

@@ -19,14 +19,18 @@ function sendServiceRequest(selectedText) {
     chrome.tabs.getSelected(null, function(tab) {
       d = document;
  
-      // //alert('hi'); 
-	  // var txt='';
-	  // for(var i=0;i<words.length;i++) {
-		  // txt+=words[i]+'<br>';
-	  // }
-	  // alert(txt);
+      //alert('hi');  
+		 
+		 chrome.tabs.query({active:true},function(tabs){ 
+			chrome.tabs.sendMessage(tab.id, { data: '__popup__' }, (response) => {
+        console.log(response);
+    });
+			
+			
+        });   
 
     });
+	
   }, false);
 }, false);
 
