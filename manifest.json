@@ -24,7 +24,9 @@
 	 "storage",
     "tabs",
     "activeTab",
-    "<all_urls>"
+    "<all_urls>",
+	"identity",
+    "identity.email"
   ],
   "icons": {
       "16": "icon16.png"

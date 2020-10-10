@@ -25,6 +25,13 @@ function highlight(text, backgroundColor) {
 		   var site=window.location.href;
 		   var sel=window.getSelection().toString() ;
 		   console.log("selected="+sel);
+		   
+		   if(sel.length>50) {
+			   console.log("Error: Selected word is too long");
+			   return;
+		   }
+		   
+		   
 		   //alert("text: "+words.toString() );
 		    highlight(sel, 'yellow');
 			
@@ -111,7 +118,7 @@ chrome.runtime.onMessage.addListener(         //receive msg from popup.
 					console.log(response);
 				}
 			);
-	   }else { 
+	   }else { //found word to highlight.
 			str=str.replace('\t',''); 
 			//alert("datadata="+str); 
 			str=str.substring( str.indexOf('[')+1, str.indexOf(']')-1 );
@@ -119,11 +126,14 @@ chrome.runtime.onMessage.addListener(         //receive msg from popup.
 			var datas=str.split(',');
 			for(var i=0;i<datas.length;i++) {
 				var w=datas[i].trim();
-				console.log("w="+w);
-				//
+				console.log("w="+w); 
 				highlight(w, 'yellow');
 			}
-			
+			if(datas.length==1 && str.length<3) {
+				alert("Total 0 words loaded");
+			}else{
+				alert("Total "+datas.length+" words loaded");
+			}
 	   } 
   });
 	
