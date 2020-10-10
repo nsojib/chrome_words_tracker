@@ -47,6 +47,7 @@ var last_word='';
                     "id": "word_saver3",
                     "title": "save_word", 
                     "contexts": ["all"],  // type of context
+					
 					 
 					onclick: function() {
 						//highlight(last_word);
@@ -170,6 +171,7 @@ var last_word='';
 	//alert("loading");
 		load_words();
 	 }else{ 
+	 console.log("newword="+request.message);
 		 words.push(request.message);
 		 last_word=request.message;
 	 }

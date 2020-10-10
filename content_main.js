@@ -18,26 +18,27 @@ function highlight(text, backgroundColor) {
   }
 }
 
- document.body.addEventListener('dblclick',function(){
+ document.body.addEventListener('dblclick',function(){   //double click listener
 	   
 	    
 	   setTimeout(function() { 
 		   var site=window.location.href;
-		   var sel=window.getSelection().toString() ; 
+		   var sel=window.getSelection().toString() ;
+		   console.log("selected="+sel);
 		   //alert("text: "+words.toString() );
-		    //highlight(sel, 'yellow');
+		    highlight(sel, 'yellow');
 			
-			document.designMode = "on";
-			var ss = window.getSelection();
-			ss.collapse(document.body, 0); 
-			// document.execCommand("HiliteColor", false, 'yellow');
-			 while (window.find(sel)) {
-			  document.execCommand("HiliteColor", false, 'yellow');
-			  //sel.collapseToEnd();
-			  break;
-			}
+			// document.designMode = "on";
+			// var ss = window.getSelection();
+			// ss.collapse(document.body, 0); 
+			// // document.execCommand("HiliteColor", false, 'yellow');
+			 // while (window.find(sel)) {
+			  // document.execCommand("HiliteColor", false, 'yellow');
+			  // //sel.collapseToEnd();
+			  // break;
+			// }
 	
-			document.designMode = "off";
+			// document.designMode = "off";
 			
 		   
 		   chrome.runtime.sendMessage(
