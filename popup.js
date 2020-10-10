@@ -22,7 +22,7 @@ function getUserID(){
 			
 			document.getElementById('output').value=email;
 			
-			var url = "https://wordsaver.000webhostapp.com?id="+email;
+			var url = "https://wordsaver.000webhostapp.com?user="+email;
 			document.getElementById('view').href=url;
 			
 		});
@@ -55,12 +55,7 @@ getUserID();
     tButton.addEventListener('click', function() {
 		//alert('test');
        //getUserID();
-	   var email=document.getElementById('output').value;
-	   var url = "https://wordsaver.000webhostapp.com?id="+email;
-	   
-	     var win = window.open(url, '_blank');
-		win.focus();
-  
+	    
 
     });
 	

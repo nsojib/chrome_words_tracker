@@ -65,33 +65,48 @@ var last_word='';
 	 console.log("st="+st);
 	 
 	 
-	 	var url=window.location.href;
-	chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-		 url = tabs[0].url; 
-		
-			 	 $.ajax({
-			type: 'GET',
-			url: 'https://wordsaver.000webhostapp.com/linkwords.php', 
-			data: {"link":url} ,
-			crossDomain : true,
-			success: function (data) {
-				console.log("data loaded="+data);
-				//alert("data_loaded="+data); 
-				//=		[tactical ,violent ,] 
-			//worked.
-			   chrome.tabs.getSelected(null, function(tab) {             //send to context to highlight these words
-					chrome.tabs.query({active:true},function(tabs){ 
-						chrome.tabs.sendMessage(tab.id, { data: data }, (response) => {
-								console.log(response);
-							}); 	
-					}); 
-				});
-			
+
+	
+	
+		chrome.identity.getProfileUserInfo(function(info) { 
+			var email=info.email;
+			var url=window.location.href;
+			chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+				 url = tabs[0].url; 
 				
-			}
+						 $.ajax({
+					type: 'GET',
+					url: 'https://wordsaver.000webhostapp.com/linkwords.php', 
+					data: {"link":url, "user":email} ,
+					crossDomain : true,
+					success: function (data) {
+						console.log("data loaded="+data);
+						//alert("data_loaded="+data); 
+						//=		[tactical ,violent ,] 
+					//worked.
+					   chrome.tabs.getSelected(null, function(tab) {             //send to context to highlight these words
+							chrome.tabs.query({active:true},function(tabs){ 
+								chrome.tabs.sendMessage(tab.id, { data: data }, (response) => {
+										console.log(response);
+									}); 	
+							}); 
+						});
+					
+						
+					}
+				});
+				
+			});
+ 
+			
+			
 		});
-		
-	});
+	
+	
+	
+	
+	
+	
 	  
 }
 
