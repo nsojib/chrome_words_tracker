@@ -45,6 +45,10 @@ var last_word='';
 					 
 					onclick: function() {
 						//highlight(last_word);
+						if(last_word.trim().length<2) {
+							alert('Failed: No word selected');
+							return;
+						} 
 						save_to_server(last_word);
 					 // alert('Saving word:'+String(last_word) ); 
 					 
